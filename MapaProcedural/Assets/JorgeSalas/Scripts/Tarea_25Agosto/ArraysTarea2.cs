@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class ArraysTarea2
@@ -32,6 +33,22 @@ public class ArraysTarea2
     // para ejercicio 5
     public int n = 10;
     public int[] arrayEnterosE5;
+
+    // para ejercicio 6
+    public int[] arrayEnterosE6;
+
+    // para ejercicio 7
+    public int[] arrayEnterosE7;
+
+    // para ejercicio 8
+    public int[] arrayEnterosE8;
+    public int k = 1;
+
+    // para ejercicio 9
+    public int[] arrayEnterosE9;
+
+    // para ejercicio 10
+    public string[] arrayStringE10;
 
 
 
@@ -110,9 +127,107 @@ public class ArraysTarea2
         {
             for(int j = i + 1; j < arrayEnterosE5.Length; j++)
             {
-                if((arrayEnterosE5[i] + arrayEnterosE5[j]) == n) Console.WriteLine("La suma de " + arrayEnterosE5[i] + " + " + arrayEnterosE5[j] + " = " + n);
+                if((arrayEnterosE5[i] + arrayEnterosE5[j]) == n) Debug.Log("La suma de " + arrayEnterosE5[i] + " + " + arrayEnterosE5[j] + " = " + n);
             }
         }
+    }
+
+    // ejercicio 6
+    void MoverCerosFinal()
+    {
+        int[] arraySinCeros = new int[arrayEnterosE6.Length];
+        int contador = 0;
+        for(int i = 0; i < arrayEnterosE6.Length; i++)
+        {
+            if(arrayEnterosE6[i] != 0)
+            {
+                arraySinCeros[contador] = arrayEnterosE6[i];
+                contador++;
+            }
+        }
+    }
+
+    // ejercicio 7
+    void OrdenAscendente()
+    {
+        bool mayor = true;
+        string determinado = "SI";
+        for(int i = 0; i < arrayEnterosE7.Length; i++)
+        {
+            for(int j = i +1; j < arrayEnterosE7.Length; j++)
+            {
+                if (arrayEnterosE7[i] > arrayEnterosE7[j]) mayor = false;
+            }
+            if (!mayor) break;
+        }
+
+        if (!mayor) determinado = "NO";
+        Debug.Log("El array " + determinado + " está ordenado de manera ascendente");
+    }
+
+    // ejercicio 8
+    void RotarArray(int k)
+    {
+        int[] arrayRotado = new int[arrayEnterosE8.Length];
+        for(int i = 0; i < arrayEnterosE8.Length; i++)
+        {
+            if(i + k < arrayEnterosE8.Length)
+            {
+                arrayRotado[i + k] = arrayEnterosE8[i];
+            }
+            else
+            {
+                arrayRotado[(i + k) - arrayEnterosE8.Length] = arrayEnterosE8[i];
+            }
+        }
+    }
+
+    // ejercicio 9 (No pude resolverlo sin ayuda)
+    void SubarraySumaMaxima()
+    {
+        int maxActual = arrayEnterosE9[0];
+        int maxTotal = arrayEnterosE9[0];
+        int inicio = 0, fin = 0, tempInicio = 0;
+
+        for (int i = 1; i < arrayEnterosE9.Length; i++)
+        {
+            if (arrayEnterosE9[i] > maxActual + arrayEnterosE9[i])
+            {
+                maxActual = arrayEnterosE9[i];
+                tempInicio = i;
+            }
+            else
+            {
+                maxActual += arrayEnterosE9[i];
+            }
+
+            if (maxActual > maxTotal)
+            {
+                maxTotal = maxActual;
+                inicio = tempInicio;
+                fin = i;
+            }
+        }
+
+        int[] subarrayMax = new int[fin - inicio + 1];
+        for (int i = 0; i < subarrayMax.Length; i++)
+        {
+            subarrayMax[i] = arrayEnterosE9[inicio + i];
+        }
+
+        Debug.Log("Suma máxima: " + maxTotal + ", Subarray: [" + string.Join(", ", subarrayMax) + "]");
+    }
+
+    // ejercicio 10
+    void StringMasLargo()
+    {
+        string stringMasLargo = arrayStringE10[0];
+        for(int i = 0; i < arrayStringE10.Length; i++)
+        {
+            if (arrayStringE10[i].Length > stringMasLargo.Length) stringMasLargo = arrayStringE10[i];
+        }
+
+        Debug.Log("Esta es el string mas largo " + stringMasLargo);
     }
 }
 
