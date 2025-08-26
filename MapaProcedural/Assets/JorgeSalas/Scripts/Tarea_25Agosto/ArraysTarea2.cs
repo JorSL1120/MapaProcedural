@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class ArraysTarea2
