@@ -104,6 +104,7 @@ public class ArraysTarea2
                     break;
                 }
             }
+
             if(!duplicado)
             {
                 arrayTemporal[contador] = arrayEnterosE4[i];
@@ -112,6 +113,7 @@ public class ArraysTarea2
         }
 
         int[] arrayNoDuplicados = new int[contador];
+
         for(int i = 0; i < contador; i++)
         {
             arrayNoDuplicados[i] = arrayTemporal[i];
@@ -135,6 +137,7 @@ public class ArraysTarea2
     {
         int[] arraySinCeros = new int[arrayEnterosE6.Length];
         int contador = 0;
+
         for(int i = 0; i < arrayEnterosE6.Length; i++)
         {
             if(arrayEnterosE6[i] != 0)
@@ -150,6 +153,7 @@ public class ArraysTarea2
     {
         bool mayor = true;
         string determinado = "SI";
+
         for(int i = 0; i < arrayEnterosE7.Length; i++)
         {
             for(int j = i +1; j < arrayEnterosE7.Length; j++)
@@ -167,6 +171,7 @@ public class ArraysTarea2
     void RotarArray(int k)
     {
         int[] arrayRotado = new int[arrayEnterosE8.Length];
+
         for(int i = 0; i < arrayEnterosE8.Length; i++)
         {
             if(i + k < arrayEnterosE8.Length)
@@ -208,6 +213,7 @@ public class ArraysTarea2
         }
 
         int[] subarrayMax = new int[fin - inicio + 1];
+
         for (int i = 0; i < subarrayMax.Length; i++)
         {
             subarrayMax[i] = arrayEnterosE9[inicio + i];
@@ -220,6 +226,7 @@ public class ArraysTarea2
     void StringMasLargo()
     {
         string stringMasLargo = arrayStringE10[0];
+
         for(int i = 0; i < arrayStringE10.Length; i++)
         {
             if (arrayStringE10[i].Length > stringMasLargo.Length) stringMasLargo = arrayStringE10[i];

@@ -108,6 +108,7 @@ public class ListasTarea2
     void Combinar2Listas()
     {
         List<int> listaCombinada = new List<int>(listaEnterosE5);
+
         foreach(int valor in listaEnterosE5_2)
         {
             if(!listaCombinada.Contains(valor)) listaCombinada.Add(valor);
@@ -118,6 +119,7 @@ public class ListasTarea2
     void InvertirLista()
     {
         List<int> listaInvertida = new List<int>(listaEnterosE6.Count);
+
         for(int i = 0; i < listaEnterosE6.Count; i++)
         {
             listaInvertida.Add(listaEnterosE6[listaEnterosE6.Count - 1 - i]);
@@ -153,6 +155,7 @@ public class ListasTarea2
     void PosicionesParesSuma()
     {
         int suma = 0;
+
         for(int i = 0; i < listaEnterosE9.Count; i += 2)
         {
             suma += listaEnterosE9[i];
@@ -167,6 +170,7 @@ public class ListasTarea2
         if (n < 0 || n > listaEnterosE10.Count) return;
 
         listaEnterosE10.Add(0);
+
         for(int i = listaEnterosE10.Count - 1; i > n; i--)
         {
             listaEnterosE10[i] = listaEnterosE10[i - 1];

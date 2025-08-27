@@ -33,14 +33,22 @@ public class DiccionariosTarea2
     public Dictionary<string, int> diccionarioE5;
 
     // para ejercicio 6
+    public Dictionary<int, int> diccionarioE6;
+    public Dictionary<int, int> diccionarioE6_2;
 
     // para ejercicio 7
+    public Dictionary<string, int> diccionarioE7;
 
     // para ejercicio 8
+    public Dictionary<int, string> diccionarioE8;
 
     // para ejercicio 9
+    public Dictionary<string, int> diccionarioE9;
 
     // para ejercicio 10
+    public Dictionary<string, int> diccionarioE10;
+    public string claveE10;
+    public int valorPorDefectoE10 = 2;
 
 
 
@@ -59,9 +67,10 @@ public class DiccionariosTarea2
                 conteo[palabra] = 1;
             }
         }
+
         foreach(var par in conteo)
         {
-            Debug.Log("La palabra " + par.Key + " aparece " + par.Value + "veces");
+            Debug.Log(par.Key + " aparece " + par.Value + " veces");
         }
     }
 
@@ -80,9 +89,10 @@ public class DiccionariosTarea2
                 conteo[numero] = 1;
             }
         }
+
         foreach (var par in conteo)
         {
-            Debug.Log("El número " + par.Key + " aparece " + par.Value + " veces");
+            Debug.Log(par.Key + " aparece " + par.Value + " veces");
         }
     }
 
@@ -95,34 +105,30 @@ public class DiccionariosTarea2
         {
             diccionarioInvertido[par.Value] = par.Key;
         }
-
-        foreach(var par in diccionarioInvertido)
-        {
-            Debug.Log("Clave: " + par.Key + ", Valor: " + par.Value);
-        }
     }
 
     // ejercicio 4
     void ClaveValorMaximo()
     {
-        string claveMaxima = null;
-        int valorMaximo = int.MinValue;
+        string claveMaxVal = null;
+        int valMax = int.MinValue;
 
         foreach(var par in diccionarioE4)
         {
-            if(par.Value > valorMaximo)
+            if(par.Value > valMax)
             {
-                valorMaximo = par.Value;
-                claveMaxima = par.Key;
+                valMax = par.Value;
+                claveMaxVal = par.Key;
             }
         }
-        Debug.Log("La clave con el valor máximo es: " + claveMaxima + " con un valor de: " + valorMaximo);
+        Debug.Log(claveMaxVal + " es la clave con maximo valor, su valor es: " + valMax);
     }
 
     // ejercicio 5
     void EliminarEntradasMenoresQueDiez()
     {
         List<string> clavesAEliminar = new List<string>();
+
         foreach(var par in diccionarioE5)
         {
             if(par.Value < 10)
@@ -130,13 +136,76 @@ public class DiccionariosTarea2
                 clavesAEliminar.Add(par.Key);
             }
         }
+
         foreach(string clave in clavesAEliminar)
         {
             diccionarioE5.Remove(clave);
         }
-        foreach(var par in diccionarioE5)
+    }
+
+    // ejercicio 6
+    void CombinarDiccionarios()
+    {
+        Dictionary<int, int> diccionarioCombinado = new Dictionary<int, int>(diccionarioE6);
+
+        foreach(var par in diccionarioE6_2)
         {
-            Debug.Log("Clave: " + par.Key + ", Valor: " + par.Value);
+            if(diccionarioCombinado.ContainsKey(par.Key))
+            {
+                diccionarioCombinado[par.Key] += par.Value;
+            }
+            else
+            {
+                diccionarioCombinado[par.Key] = par.Value;
+            }
+        }
+    }
+
+    // ejercicio 7
+    void SumarValoresDiccionario()
+    {
+        int suma = 0;
+
+        foreach(var par in diccionarioE7)
+        {
+            suma += par.Value;
+        }
+    }
+
+    // ejercicio 8
+    void InvertirDiccionario()
+    {
+        Dictionary<string, int> diccionarioInvertido = new Dictionary<string, int>();
+
+        foreach(var par in diccionarioE8)
+        {
+            diccionarioInvertido[par.Value] = par.Key;
+        }
+    }
+
+    // ejercicio 9
+    void ClavesValoresPares()
+    {
+        foreach(var par in diccionarioE9)
+        {
+            if(par.Value % 2 == 0)
+            {
+                Debug.Log("Clave con valor par: " + par.Key);
+            }
+        }
+    }
+
+    // ejercicio 10
+    void VerificarAgregarClave(string clave, int valorPorDefecto)
+    {
+        if(diccionarioE10.ContainsKey(clave))
+        {
+            Debug.Log("El valor de " + clave + " es: " + diccionarioE10[clave]);
+        }
+        else
+        {
+            diccionarioE10[clave] = valorPorDefecto;
+            Debug.Log(clave + " no existe, se agrega con este valor: " + valorPorDefecto);
         }
     }
 }
