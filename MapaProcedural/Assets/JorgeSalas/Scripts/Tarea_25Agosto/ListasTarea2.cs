@@ -40,10 +40,15 @@ public class ListasTarea2
     public List<int> listaEnterosE7;
 
     // para ejercicio 8
+    public List<int> listaEnterosE8;
 
     // para ejercicio 9
+    public List<int> listaEnterosE9;
 
     // para ejercicio 10
+    public List<int> listaEnterosE10;
+    public int valor = 0;
+    public int n = 0;
 
 
 
@@ -126,5 +131,46 @@ public class ListasTarea2
     }
 
     // ejercicio 8
+    void EncontrarDuplicados()
+    {
+        List<int> listaDuplicados = new List<int>();
+        List<int> guardados = new List<int>();
 
+        foreach(int valor in listaEnterosE8)
+        {
+            if(guardados.Contains(valor) && !listaDuplicados.Contains(valor))
+            {
+                listaDuplicados.Add(valor);
+            }
+            else
+            {
+                guardados.Add(valor);
+            }
+        }
+    }
+
+    // ejercicio 9
+    void PosicionesParesSuma()
+    {
+        int suma = 0;
+        for(int i = 0; i < listaEnterosE9.Count; i += 2)
+        {
+            suma += listaEnterosE9[i];
+        }
+
+        Debug.Log("Las posiciones pares suman: " + suma);
+    }
+
+    // ejercicio 10
+    void ValorPosicionN(int valor, int n)
+    {
+        if (n < 0 || n > listaEnterosE10.Count) return;
+
+        listaEnterosE10.Add(0);
+        for(int i = listaEnterosE10.Count - 1; i > n; i--)
+        {
+            listaEnterosE10[i] = listaEnterosE10[i - 1];
+        }
+        listaEnterosE10[n] = valor;
+    }
 }
