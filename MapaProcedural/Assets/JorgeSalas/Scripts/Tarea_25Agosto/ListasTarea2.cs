@@ -30,10 +30,14 @@ public class ListasTarea2
     public List<int> listaEnterosE4;
 
     // para ejercicio 5
+    public List<int> listaEnterosE5;
+    public List<int> listaEnterosE5_2;
 
     // para ejercicio 6
+    public List<int> listaEnterosE6;
 
     // para ejercicio 7
+    public List<int> listaEnterosE7;
 
     // para ejercicio 8
 
@@ -94,4 +98,33 @@ public class ListasTarea2
         }
         Debug.Log(valMaxSegundo + " es el segundo valor mas grande");
     }
+
+    // ejercicio 5
+    void Combinar2Listas()
+    {
+        List<int> listaCombinada = new List<int>(listaEnterosE5);
+        foreach(int valor in listaEnterosE5_2)
+        {
+            if(!listaCombinada.Contains(valor)) listaCombinada.Add(valor);
+        }
+    }
+
+    // ejercicio 6
+    void InvertirLista()
+    {
+        List<int> listaInvertida = new List<int>(listaEnterosE6.Count);
+        for(int i = 0; i < listaEnterosE6.Count; i++)
+        {
+            listaInvertida.Add(listaEnterosE6[listaEnterosE6.Count - 1 - i]);
+        }
+    }
+
+    // ejercicio 7
+    void EliminarImpares()
+    {
+        listaEnterosE7.RemoveAll(val => val % 2 != 0);
+    }
+
+    // ejercicio 8
+
 }
