@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilemapController
   tile: {fileID: 11400000, guid: 5c7edb569040af94e99c4c3e119f1367, type: 2}
-  height: 10
-  width: 10
+  height: 7
+  width: 7
 --- !u!4 &2108111256
 Transform:
   m_ObjectHideFlags: 0

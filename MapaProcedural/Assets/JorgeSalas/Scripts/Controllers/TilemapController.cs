@@ -29,21 +29,68 @@ public class TilemapController : MonoBehaviour
         // Le agregamos sus objetos al gameobject tilemap
         tilemap.AddComponent<Tilemap>();
         tilemap.AddComponent<TilemapRenderer>();
+        TilemapRenderer tilemapRenderer = tilemap.GetComponent<TilemapRenderer>();
+        tilemapRenderer.sortOrder = TilemapRenderer.SortOrder.TopRight;
 
         // Asignarle a tilemap el padre que es grid
         tilemap.transform.parent = grid.transform;
 
         Tilemap map = tilemap.GetComponent<Tilemap>();
-        map.SetTile(position, tile);
+        //map.SetTile(position, tile);
 
 
-        Rectangle(map);
+        //Rectangle(map);
+        //Triangle(map);
+        //Circle(map);
+        //Line(map);
+        //Arrow(map);
+        Sword(map);
     }
 
     public void Rectangle(Tilemap tilemap)
     {
         Map map = new Map();
         List<Vector3Int> coordenadas = map.GetOriginRectangle(height, width);
+
+        map.Paint(coordenadas, tile, tilemap);
+    }
+
+    public void Triangle(Tilemap tilemap)
+    {
+        Map map = new Map();
+        List<Vector3Int> coordenadas = map.GetOriginTriangle(height, width);
+
+        map.Paint(coordenadas, tile, tilemap);
+    }
+
+    public void Circle(Tilemap tilemap)
+    {
+        Map map = new Map();
+        List<Vector3Int> coordenadas = map.GetOriginCircle(height, width);
+
+        map.Paint(coordenadas, tile, tilemap);
+    }
+
+    public void Line(Tilemap tilemap)
+    {
+        Map map = new Map();
+        List<Vector3Int> coordenadas = map.GetOriginLine(height, width);
+
+        map.Paint(coordenadas, tile, tilemap);
+    }
+
+    public void Arrow(Tilemap tilemap)
+    {
+        Map map = new Map();
+        List<Vector3Int> coordenadas = map.GetOriginArrow(height, width);
+
+        map.Paint(coordenadas, tile, tilemap);
+    }
+
+    public void Sword(Tilemap tilemap)
+    {
+        Map map = new Map();
+        List<Vector3Int> coordenadas = map.GetOriginSword(height, width);
 
         map.Paint(coordenadas, tile, tilemap);
     }
