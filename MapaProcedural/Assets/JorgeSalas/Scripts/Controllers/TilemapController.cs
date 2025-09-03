@@ -44,7 +44,8 @@ public class TilemapController : MonoBehaviour
         //Circle(map);
         //Line(map);
         //Arrow(map);
-        Sword(map);
+        //Sword(map);
+        Rectangle2(map);
     }
 
     public void Rectangle(Tilemap tilemap)
@@ -91,6 +92,14 @@ public class TilemapController : MonoBehaviour
     {
         Map map = new Map();
         List<Vector3Int> coordenadas = map.GetOriginSword(height, width);
+
+        map.Paint(coordenadas, tile, tilemap);
+    }
+    
+    public void Rectangle2(Tilemap tilemap)
+    {
+        Map map = new Map();
+        List<Vector3Int> coordenadas = map.GetOriginRectangle2(height, width);
 
         map.Paint(coordenadas, tile, tilemap);
     }

@@ -97,6 +97,20 @@ public class Map
         }
         return coordenadas;
     }
+    
+    public List<Vector3Int> GetOriginRectangle2(int height, int width)
+    {
+        List<Vector3Int> coordenadas = new List<Vector3Int>();
+        int area = width * height;
+
+        for (int i = 0; i < area; i++)
+        {
+            int x = i % width;
+            int y = i / height;
+            coordenadas.Add(new Vector3Int(x, y, 0));
+        }
+        return coordenadas;
+    }
 
     public void Paint(List<Vector3Int> coordenadas, TileBase tile, Tilemap tilemap)
     {
