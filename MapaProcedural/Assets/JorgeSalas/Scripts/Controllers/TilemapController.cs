@@ -141,7 +141,7 @@ public class TilemapController : MonoBehaviour
         Map map = new Map(mapOrigin[1], mapSizes[1], tilemap, MapType.Rectangle);
         List<Vector3Int> coordenadas = map.generateCoordinates();
 
-        map.Render(coordenadas, tiles[0], tilemap);
+        map.Render(coordenadas, tiles[1], tilemap);
     }
 
     private void GenerateTriangle(Tilemap tilemap)
@@ -149,7 +149,7 @@ public class TilemapController : MonoBehaviour
         Map map = new Map(mapOrigin[3], mapSizes[3], tilemap, MapType.Triangle);
         List<Vector3Int> coordenadas = map.generateCoordinates();
 
-        map.Render(coordenadas, tiles[0], tilemap);
+        map.Render(coordenadas, tiles[3], tilemap);
     }
 
     private void GenerateLine(Tilemap tilemap)
@@ -165,6 +165,6 @@ public class TilemapController : MonoBehaviour
         Map map = new Map(mapOrigin[2], mapSizes[2], tilemap, MapType.Circle);
         List<Vector3Int> coordenadas = map.generateCoordinates();
 
-        map.Render(coordenadas, tiles[0], tilemap);
+        map.Render(coordenadas, tiles[2], tilemap);
     }
 }

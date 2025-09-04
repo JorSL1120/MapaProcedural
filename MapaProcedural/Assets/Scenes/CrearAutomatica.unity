@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &703946117
 AudioListener:
   m_ObjectHideFlags: 0
@@ -248,10 +248,13 @@ MonoBehaviour:
   mapOrigin:
   - {x: 0, y: 0}
   - {x: 5, y: 5}
-  - {x: 12, y: 3}
-  - {x: 8, y: 0}
+  - {x: 17, y: 3}
+  - {x: 25, y: 2}
   tiles:
   - {fileID: 11400000, guid: 5c7edb569040af94e99c4c3e119f1367, type: 2}
+  - {fileID: 11400000, guid: 91dad2b8d5696a2439d7a1ff685022bc, type: 2}
+  - {fileID: 11400000, guid: e15829af497aabd4497fbee6de1f1981, type: 2}
+  - {fileID: 11400000, guid: 469d344fa1d980a41b98e04a2b5c0739, type: 2}
 --- !u!4 &2108111256
 Transform:
   m_ObjectHideFlags: 0

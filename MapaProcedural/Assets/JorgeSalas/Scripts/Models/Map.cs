@@ -177,12 +177,19 @@ public class Map
                 return coordenadas;
 
             case MapType.Triangle:
-                for (int x = _origin.x; x <= _size.x + _origin.x; x++)
+                for (int x = 0; x < _size.x; x++)
                 {
-                    _size.y -= 1;
-                    for (int y = _origin.y; y <= _size.y + _origin.y; y++)
+                    if (x % 2 == 0 && x != 0)
                     {
-                        coordenadas.Add(new Vector3Int(x, y, 0));
+                        _size.y -= 2;
+                        _origin.y++;
+                    }
+
+                    if (_size.y <= 0) break;
+
+                    for (int y = 0; y < _size.y; y++)
+                    {
+                        coordenadas.Add(new Vector3Int(_origin.x + x, _origin.y + y, 0));
                     }
                 }
                 return coordenadas;
