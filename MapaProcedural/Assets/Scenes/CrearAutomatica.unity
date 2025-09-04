@@ -240,9 +240,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed3f6fceec9fe14ab7a70001fd3aba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TilemapController
-  tile: {fileID: 11400000, guid: 5c7edb569040af94e99c4c3e119f1367, type: 2}
-  height: 7
-  width: 7
+  mapSizes:
+  - {x: 5, y: 5}
+  - {x: 12, y: 4}
+  - {x: 8, y: 8}
+  - {x: 10, y: 10}
+  mapOrigin:
+  - {x: 0, y: 0}
+  - {x: 5, y: 5}
+  - {x: 12, y: 3}
+  - {x: 8, y: 0}
+  tiles:
+  - {fileID: 11400000, guid: 5c7edb569040af94e99c4c3e119f1367, type: 2}
 --- !u!4 &2108111256
 Transform:
   m_ObjectHideFlags: 0

@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+public enum MapType {Line, Rectangle, Circle, Triangle}
 public class Map
 {
+    /*
     public Map()
     {
 
@@ -105,8 +109,8 @@ public class Map
 
         for (int i = 0; i < area; i++)
         {
-            int x = i % width;
-            int y = i / height;
+            int x = i / width;
+            int y = i % height;
             coordenadas.Add(new Vector3Int(x, y, 0));
         }
         return coordenadas;
@@ -115,6 +119,80 @@ public class Map
     public void Paint(List<Vector3Int> coordenadas, TileBase tile, Tilemap tilemap)
     {
         for(int i = 0; i < coordenadas.Count; i++)
+        {
+            tilemap.SetTile(coordenadas[i], tile);
+        }
+    }*/
+
+    private MapType _type;
+    private Vector2Int _origin;
+    private Vector2Int _size;
+    private Tilemap _tilemap;
+
+    public Map(Vector2Int origin, Vector2Int size, Tilemap tilemap, MapType type)
+    {
+        _origin = origin;
+        _size = size;
+        _tilemap = tilemap;
+        _type = type;
+    }
+
+    public List<Vector3Int> generateCoordinates()
+    {
+        List<Vector3Int> coordenadas = new List<Vector3Int>();
+        switch (_type)
+        {
+            case MapType.Line:
+                for(int x = _origin.x; x < _size.x; x++)
+                {
+                    for(int y = _origin.y; y < _size.y; y++)
+                    {
+                        if(x == y) coordenadas.Add(new Vector3Int(x, y, 0));
+                    }
+                }
+                return coordenadas;
+
+            case MapType.Rectangle:
+                for (int x = _origin.x; x < _size.x + _origin.x; x++)
+                {
+                    for (int y = _origin.y; y < _size.y + _origin.y; y++)
+                    {
+                        coordenadas.Add(new Vector3Int(x, y, 0));
+                    }
+                }
+                return coordenadas;
+
+            case MapType.Circle:
+                for (int x = _origin.x; x < _size.x + _origin.x; x++)
+                {
+                    for (int y = _origin.y; y < _size.y + _origin.y; y++)
+                    {
+                        coordenadas.Add(new Vector3Int(x, y, 0));
+                    }
+                }
+                coordenadas.Remove(new Vector3Int(_origin.x, _origin.y, 0));
+                coordenadas.Remove(new Vector3Int(_origin.x, (_size.y + _origin.y - 1), 0));
+                coordenadas.Remove(new Vector3Int((_size.x + _origin.x - 1), _origin.y, 0));
+                coordenadas.Remove(new Vector3Int((_size.x + _origin.x - 1), (_size.y + _origin.y - 1), 0));
+                return coordenadas;
+
+            case MapType.Triangle:
+                for (int x = _origin.x; x <= _size.x + _origin.x; x++)
+                {
+                    _size.y -= 1;
+                    for (int y = _origin.y; y <= _size.y + _origin.y; y++)
+                    {
+                        coordenadas.Add(new Vector3Int(x, y, 0));
+                    }
+                }
+                return coordenadas;
+        }
+        return coordenadas;
+    }
+
+    public void Render(List<Vector3Int> coordenadas, Tile tile, Tilemap tilemap)
+    {
+        for (int i = 0; i < coordenadas.Count; i++)
         {
             tilemap.SetTile(coordenadas[i], tile);
         }
